@@ -16,17 +16,16 @@ import com.loja.enums.FormasDePgt;
 @Entity
 public class Venda implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private int cliente_id;
 	private int desconto;
 	private Instant data;
 	private FormasDePgt formas_pgt;
-	
+
 	@OneToMany(mappedBy = "ids.venda")
 	private Set<ItensDaVenda> item = new HashSet<>();
-	
+
 	public Venda() {
 		super();
 	}
@@ -38,51 +37,39 @@ public class Venda implements Serializable {
 		this.data = data;
 		this.formas_pgt = formas_pgt;
 	}
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public int getCliente_id() {
 		return cliente_id;
 	}
-
 	public void setCliente_id(int cliente_id) {
 		this.cliente_id = cliente_id;
 	}
-
 	public int getDesconto() {
 		return desconto;
 	}
-
 	public void setDesconto(int desconto) {
 		this.desconto = desconto;
 	}
-
 	public Instant getData() {
 		return data;
 	}
-
 	public void setData(Instant data) {
 		this.data = data;
 	}
-
 	public FormasDePgt getFormas_pgt() {
 		return formas_pgt;
 	}
-
 	public void setFormas_pgt(FormasDePgt formas_pgt) {
 		this.formas_pgt = formas_pgt;
 	}
-	
 	public Set<ItensDaVenda> getItem(){
 		return item;
 	}
-	
 	public Double getTotal() {
 		double soma = 0;
 		for (ItensDaVenda x : item) {
@@ -90,7 +77,9 @@ public class Venda implements Serializable {
 		}
 		return soma;
 	}
+
 	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -99,10 +88,12 @@ public class Venda implements Serializable {
 		return result;
 	}
 
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
-			return true;
+		return true;
 		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
@@ -111,12 +102,16 @@ public class Venda implements Serializable {
 		if (id != other.id)
 			return false;
 		return true;
+
 	}
 
 	@Override
 	public String toString() {
+
 		return "Venda [id=" + id + ", cliente_id=" + cliente_id + ", desconto=" + desconto + ", data=" + data
 				+ ", formas_pgt=" + formas_pgt + "]";
+
 	}
-	
+
+
 }
